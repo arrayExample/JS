@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register App</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body>
+
+<div>
+<table id="transactionTable">
+    <tr>
+        <td>Description</td>
+        <td>Price</td>
+        <!-- qty down -->
+        <td>-</td>
+        <td>Quantity</td>
+        <!-- qty up -->
+        <td>+</td>
+        <!-- addItemButton -->
+        <td></td>
+        <!-- removeItemButton -->
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>
+            <button id="downQty" class="button" data-modal="downQtyButton">
+                -
+            </button>
+        </td>
+        <td></td>
+        <td>
+            <button id="upQty" class="button" data-modal="upQtyButton">
+                +
+            </button>
+        </td>
+        <td>
+            <button id="addItem" class="button" data-modal="addItemButton">
+                Add Item
+            </button>
+        </td>
+        <td>
+            <button id="RemoveItem" class="button" data-modal="removeItemButton">
+                Remove Item
+            </button>
+        </td>
+    </tr>
+</table>
+</div>
+<div id="addItemButton" class="modal">
+    <div class="modal-content">
+        <div class="contact-form">
+            <a class="close">&times;</a>
+            <table id="addItemTable">
+            <tr>
+                <td>
+                    <p id="uPCData" onclick = "constructTable('#table')"></p>
+                </td>
+                <td id="descriptionData">Description</td>
+                <td id="priceData">Price</td>
+            </tr>
+                </table>
+        </div>
+    </div>
+</div>
+
+<div id="removeItemButton" class="modal">
+    <div class="modal-content">
+        <div class="contact-form">
+            <span class="close">&times;</span>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/Register.js"></script>
+</body>
+</html>
