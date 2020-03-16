@@ -4,32 +4,16 @@ var newCell = newRow.insertCell(0);
 var newText = document.createTextNode('new row');
 newCell.appendChild(newText);
 
-/*var addItemTableRef = document.getElementById('addItemTable');
-var newRow = addItemTableRef.insertRow();
-var newCell = newRow.insertCell(0);
-var newText = document.createTextNode('');
-newCell.appendChild(newText);*/
-
 var descriptionData = document.getElementById('uPCData');
-
 var list = [
- { "UPC": "0001",
-  "Description": "Potatoes",
-   "Price": "$13.22"}
+ { "UPC": "0001", "Description": "Potatoes", "Price": "$13.22"},
+  { "UPC":"0002","Description":"Cake","Price":"$20.22"},
+   {"UPC":"0003","Description":"Chargine Cable","Price":"$12.20"}
 ];
-descriptionData.innerHTML = JSON.stringify(list[0])
-/*
-var addItemTableRef = document.getElementById('addItemTable');
-var obj = JSON.parse('{ "UPC": "0001", "Description": "Potatoes", "Price": "$13.22"}');
-var newRow = addItemTableRef.insertRow();
-var newCell = newRow.insertCell(0);
-var rowIndex = 1;
-var cellIndex = 1;
-document.getElementById('addItemTable').rows[rowIndex].cells[rowIndex] = obj.UPC;
-document.getElementById('addItemTable').rows[1].cells[2] = obj.description;
-document.getElementById('addItemTable').rows[1].cells[3] = obj.price;
+descriptionData.innerHTML = JSON.stringify(list[0]) + "<br>"
+                + JSON.stringify(list[1]) + "<br>"
+                + JSON.stringify(list[2]);
 
-*/
 function constructTable(selector) {
     // Getting the all column names
     var cols = Headers(list, selector);
@@ -48,24 +32,23 @@ function constructTable(selector) {
         $(selector).append(row);
     }
 }
+
 function Headers(list, selector) {
-var columns = [];
-var header = $('<tr/>');
-for (var i = 0; i < list.length; i++) {
-    var row = list[i];
-
-    for (var k in row) {
-        if ($.inArray(k, columns) == -1) {
-            columns.push(k);
-
-            // Creating the header
-            header.append($('<th/>').html(k));
+    var columns = [];
+    var header = $('<tr/>');
+    for (var i = 0; i < list.length; i++) {
+        var row = list[i];
+        for (var k in row) {
+            if ($.inArray(k, columns) == -1) {
+                columns.push(k);
+                // Creating the header
+                header.append($('<th/>').html(k));
+            }
         }
     }
-}
-// Appending the header to the table
-$(selector).append(header);
-    return columns;
+    // Appending the header to the table
+    $(selector).append(header);
+        return columns;
 }
 
 var modalButtons = [...document.querySelectorAll(".button")];
