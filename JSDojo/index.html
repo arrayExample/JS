@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Dojo App</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+      <script>
+
+    </script>
+    <body>
+        <button id="myButton">Click me!</button>
+        <div id="myDiv">Hover over me!</div>
+        <div id="parentDiv">
+            <button id="button1" class="clickMe">Click me</button>
+            <button id="button2" class="clickMe">Click me also</button>
+            <button id="button3" class="clickMe">Click me too</button>
+            <button id="button4" class="clickMe">Please click me</button>
+        </div>
+        <br/>
+        <div id="tableDiv">
+            <table id = "orderTable">
+                <thead id="orderTableHeader">
+                    <tr>
+                        <th>Description</th>
+                        <th>Dwn</th>
+                        <th>Quantity</th>
+                        <th>Up</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+
+
+            </table>
+
+        </div>
+        <br/>
+            <button id="addItemButton">Add Item</button>
+            <button id="removeItemButton">Remove Item</button>
+        <br/>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.14.1/dojo/dojo.js" data-dojo-config="async:true"></script>
+        <script>
+            //Finding an id
+            require(["dojo/dom"], function(dom){
+                var n = dom.byId("addItemButton");
+                if (n) {
+                    console.log("Add Item button was found");
+                } else {
+                    console.log("Add Item button Not found.");
+                }
+            });
+            //Add Item Button
+            require(["dojo/dom-construct", "dojo/dom", "dojo/on",  "dojo/domReady!"],
+            function(domConstruct, dom, on){
+                    on(dom.byId("addItemButton"), "click", function(){
+                        domConstruct.place("<tbody><tr><td>Cat Litter</td><td><button id='qtyDown'>-</button></td><td>23</td><td><button>+</button></td><td>12.12</td></tr></tbody>","orderTableHeader","after");
+                });
+            });
+            //Finding an id
+            require(["dojo/dom"], function(dom){
+                var n = dom.byId("qtyDown");
+                if (n) {
+                    console.log("Qty Down button was found");
+                } else {
+                    console.log("Qty Down button Not found.");
+                }
+            });
+            //Qty Down Button (created in Add Item)
+            require(["dojo/dom-construct", "dojo/dom", "dojo/on", "dojo/domReady!"],
+            function(domConstruct, dom, on){
+
+            })
+            //Qty Up Button (created in Add Item)
+            
+            //Remove Item Button
+        </script>
+    </body>
+</html>
