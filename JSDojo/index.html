@@ -39,9 +39,13 @@
             <button id="removeItemButton">Remove Item</button>
         <br/>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.14.1/dojo/dojo.js" data-dojo-config="async:true"></script>
+        <script data-dojo-config="selectorEngine: 'css3',async:true"
+        src="http://ajax.googleapis.com/ajax/libs/dojo/1.14.1/dojo/dojo.js">
+        </script>
+        </script>
         <script>
-            //Finding an id
+
+            //Finding an id and printing to console.
             require(["dojo/dom"], function(dom){
                 var n = dom.byId("addItemButton");
                 if (n) {
@@ -50,14 +54,16 @@
                     console.log("Add Item button Not found.");
                 }
             });
+
             //Add Item Button
             require(["dojo/dom-construct", "dojo/dom", "dojo/on",  "dojo/domReady!"],
             function(domConstruct, dom, on){
                     on(dom.byId("addItemButton"), "click", function(){
-                        domConstruct.place("<tbody><tr><td>Cat Litter</td><td><button id='qtyDown'>-</button></td><td>23</td><td><button>+</button></td><td>12.12</td></tr></tbody>","orderTableHeader","after");
+                        domConstruct.place("<tbody><tr><td>Cat Litter</td><td><button id='qtyDown'>-</button></td><td id='quantity'>1</td><td><button>+</button></td><td>12.12</td></tr></tbody>","orderTableHeader","after");
                 });
             });
-            //Finding an id
+
+            //Finding an id and printing to console.
             require(["dojo/dom"], function(dom){
                 var n = dom.byId("qtyDown");
                 if (n) {
@@ -66,14 +72,84 @@
                     console.log("Qty Down button Not found.");
                 }
             });
-            //Qty Down Button (created in Add Item)
-            require(["dojo/dom-construct", "dojo/dom", "dojo/on", "dojo/domReady!"],
-            function(domConstruct, dom, on){
 
-            })
+            //Qty Down Button (created in Add Item)
+            require(["dojo/dom", "dojo/dom-attr",  "dojo/on"],
+            function(dom, domAttr, on){
+                var quantity = dom.byId("quantity");
+                if (quantity) {
+                    console.log("Qty amount was found");
+                } else {
+                    console.log("Qty amount Not found.");
+                }
+                domAttr.get(quantity);
+                // Check arival?
+                
+
+                var qtyDown = dom.byId("qtyDown");
+                domAttr.get(qtyDown);
+                on(qtyDown,"click", function(quantity){
+                    quantity = 1;
+
+                });
+            });
+
             //Qty Up Button (created in Add Item)
             
             //Remove Item Button
+
+            //Refresh HTML id's/CSS classes
+            require(["dojo/query", "dojo/dom"], function(query, dom){
+                var qtyDown = query("qtyDown");
+                var quantity = query("quantity");
+                if (qtyDown, quantity) {
+                    console.log("Qty Down and quantity button was found");
+                } else {
+                    console.log("Qty Down button and quantity amount  Not found.");
+                }
+            });
+            /* Random TidBits
+
+            require(["dojo/on", "dojo/dom", "dojo/dom-style", "dojo/mouse", "dojo/domReady!"],
+            function(on, dom, domStyle, mouse) {
+                var myButton = dom.byId("myButton"),
+                    myDiv = dom.byId("myDiv");
+
+                on(myButton, "click", function(evt){
+                    domStyle.set(myDiv, "backgroundColor", "blue");
+                });
+                on(myDiv, mouse.enter, function(evt){
+                    domStyle.set(myDiv, "backgroundColor", "red");
+                });
+                on(myDiv, mouse.leave, function(evt){
+                    domStyle.set(myDiv, "backgroundColor", "");
+                });
+            });
+
+            require(["dojo/on", "dojo/dom", "dojo/query", "dojo/domReady!"],
+            function(on, dom){
+
+                var myObject = {
+                    id: "myObject",
+                    onClick: function(evt){
+                        alert("The scope of this handler is " + this.id);
+                    }
+                };
+                var div = dom.byId("parentDiv");
+                on(div, ".clickMe:click", myObject.onClick);
+
+            });
+
+            require(["dojo/dom"], function(dom){
+                var n = dom.byId("addItemButton");
+                if (n) {
+                    console.log("Add Item button was found");
+                } else {
+                    console.log("Add Item button Not found.");
+                }
+            });
+            */
+
         </script>
     </body>
 </html>
