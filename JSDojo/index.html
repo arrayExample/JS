@@ -5,9 +5,6 @@
         <title>Dojo App</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
-      <script>
-
-    </script>
     <body>
         <button id="myButton">Click me!</button>
         <div id="myDiv">Hover over me!</div>
@@ -38,13 +35,7 @@
             <button id="addItemButton">Add Item</button>
             <button id="removeItemButton">Remove Item</button>
         <br/>
-
-        <script data-dojo-config="selectorEngine: 'css3',async:true"
-        src="http://ajax.googleapis.com/ajax/libs/dojo/1.14.1/dojo/dojo.js">
-        </script>
-        </script>
         <script>
-
             //Finding an id and printing to console.
             require(["dojo/dom"], function(dom){
                 var n = dom.byId("addItemButton");
@@ -84,8 +75,6 @@
                 }
                 domAttr.get(quantity);
                 // Check arival?
-                
-
                 var qtyDown = dom.byId("qtyDown");
                 domAttr.get(qtyDown);
                 on(qtyDown,"click", function(quantity){
@@ -149,7 +138,6 @@
                 }
             });
             */
-
         </script>
     </body>
 </html>
