@@ -8,62 +8,48 @@
         
     </head>
     <body>
-<!-- Insert string -->
-        <div id="app">
-            {{ message }}
+<!-- APP 1 BEGIN-->
+<!-- Directive v-if, v-else, and Template binding, tied to 'show'  v-else-if also available -->
+        <div id="app1">
+            <p v-if="show">See me.</p>
+            <p v-else>See meh!?</p>
+            <template v-if="show">
+                <h1>Heading!@!@</h1>
+                <p>Inside a template</p>
+            </template>
+            <p v-show="show">Do you see meh?</p>
+            <button @click="show = !show">seame??</button>
         </div>
-        <!-- Directive hover -->
-        <div id="app-2">
-            <!-- v-bind is a directive/special attribute provided by Vue -->
-            <span v-bind:title="message">
-                Hover your mouse over me for a few seconds
-                to see my dynamically bound title!
-            </span>
-          </div>
+<!-- APP 1 END -->
 
-        <!-- Directive hide -->
-        <div id="app-3">
-            <span v-if="seen">Now you see me</span>
-        </div>
-
-        <!-- Directive 'for' print array/JSON -->
-        <div id="app-4">
+<!-- APP 2 BEGIN-->
+<!-- Directive v-for and nested for extract from list, array, etc -->
+        <div id="app2">
+        <!-- Iterate through an array -->
+            <ul>
+                <li v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</li>
+            </ul>
+        <!-- Group together using template.-->
+            <template v-for="(ingredient, index) in ingredients">
+                <h1>{{ ingredient }}</h1>
+                <p>{{ index }}</p>
+            </template>
+            <br/>
+        <!-- Iterate through a multidementional array, json, etc -->
             <ol>
-                <li v-for="todo in todos">
-                    {{ todo.text }}
+                <li v-for="person in persons">{{ person.name }}
+                    <div v-for="(value, key, index) in person">{{ key }}: {{ value }} ({{ index }})</div>
                 </li>
             </ol>
-        </div>
+            <br/>
+        <!-- Loop to 10. -->
+            <span v-for="n in 10">{{ n }}</span>
+            <br/>
 
-        <!-- Directive reverseMessage-->
-        <div id="app-5">
-            <p>{{ message }}</p>
-            <button v-on:click="reverseMessage">Reverse Message</button>
-        </div>
 
-        <!-- Directive model input-->
-        <div id="app-6">
-            <p>{{ message }}</p>
-            <input v-model="message">
         </div>
+<!-- APP 2 END-->
 
-        <!--  -->
-        <div id="app-7">
-            <ol>
-              <!--
-                Now we provide each todo-item with the todo object
-                it's representing, so that its content can be dynamic.
-                We also need to provide each component with a "key",
-                which will be explained later.
-              -->
-                <todo-item
-                    v-for="item in groceryList"
-                    v-bind:todo="item"
-                    v-bind:key="item.id"
-                ></todo-item>
-            </ol>
-          </div>
-
-        <div id="components-demo">
-            <button-counter></button-counter>
-        </div>
+        <script src="project.js"></script>
+    </body>
+</html>
